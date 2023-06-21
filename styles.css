@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1c1c1c;
+  }
+  
+  .card {
+    background-color: #c6c6c6;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(17, 213, 219);
+    text-align: center;
+    display: flex; /* Utiliza flexbox para centrar los campos */
+    flex-direction: column; /* Alinea los campos en una columna */
+    align-items: center; /* Centra los campos horizontalmente */
+    justify-content: center; /* Centra los campos verticalmente */
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    margin-left: 20px; /* Margen izquierdo interno */
+    margin-right: 20px; /* Margen derecho interno */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out; /* Transición para el efecto de enfoque */
+  }
+  
+  /* Cambio para el efecto de enfoque */
+  input[type="text"]:focus {
+    border-color: turquoise; /* Cambia el color del borde al enfocar el campo */
+    border-width: 2px; /*aumenta el grosor del borde*/
+    outline: none; /* Elimina el contorno predeterminado del enfoque */
+  }
+  
+  .date-range {
+    display: flex;
+  }
+  
+  .date-range input[type="text"] {
+    width: 50%;
+    margin-right: 10px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

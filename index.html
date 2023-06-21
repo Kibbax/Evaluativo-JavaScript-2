@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Landing Page</title>
+    </head>
+
+    <body>
+        <h1>Movie Filter</h1>
+
+        <form id="filterForm">
+            <div class="card">
+                <h1>Formulario de Filtrado</h1>
+                <div class="form-group">
+                    <label for="userId">Usuario:</label>
+                    <input type="text" id="userId" name="userId">
+                </div>
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <div class="date-range">
+                        <label for="fromDate">Desde:</label>
+                        <input type="text" id="fromDate" name="fromDate">
+                        <label for="toDate">Hasta:</label>
+                        <input type="text" id="toDate" name="toDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rate">Calificación:</label>
+                    <input type="text" id="rate" name="rate">
+                </div>
+                <div class="filterButton">
+                    <button id="filterButton">Filter Movies</button>
+                </div>
+            </div>
+
+            <div id="films">
+                <!-- Here the results will be displayed  -->
+              </div>
+
+            <script src="/scripts/movies-filter.js"></script>
+
+        </body>
+
+    </html>
