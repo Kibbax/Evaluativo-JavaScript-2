@@ -407,7 +407,7 @@ filterButton.addEventListener('click', function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe
 
     // Obtener los valores del formulario
-    const userId = document.getElementById('userId').value;
+    const userId = parseInt(document.getElementById('userId').value); //al usar input convierto los valores capturados a valor numerico
     const fromDate = document.getElementById('fromDate').value;
     const toDate = document.getElementById('toDate').value;
     const rate = document.getElementById('rate').value;
