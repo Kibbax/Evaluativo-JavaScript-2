@@ -360,65 +360,99 @@ const movies = [
 ]
 
 
+
 function filterMovies({ users, movies, userId, fromDate, toDate, rate }) {
     // Filtrar por fecha
     const filteredMovies = movies.filter(movie => {
-      const watchedDate = new Date(movie.watched).getTime();
-      const fromTime = new Date(fromDate).getTime();
-      const toTime = new Date(toDate).getTime();
-      return watchedDate >= fromTime && watchedDate <= toTime;
+        const watchedDate = new Date(movie.watched).getTime();
+        const fromTime = new Date(fromDate).getTime();
+        const toTime = new Date(toDate).getTime();
+        return watchedDate >= fromTime && watchedDate <= toTime;
     });
-  
-    // Filtrar por calificación y usuario si se proporcionan
-    const result = filteredMovies.filter(movie => {
-      if (rate && userId) {
-        return movie.rate >= rate && movie.userId === userId;
-      } else if (rate) {
-        return movie.rate >= rate;
-      } else if (userId) {
-        return movie.userId === userId;
-      }
-      return true;
-    });
-  
+
+    // Filtrar por usuario si se proporciona
+    let result = filteredMovies;
+    if (userId) {
+        result = result.filter(movie => movie.userId === userId);
+    }
+
+    // Filtrar por calificación si se proporciona
+    if (rate) {
+        result = result.filter(movie => movie.rate >= rate);
+    }
+
     // Obtener los datos de usuario para cada película
     const moviesWithUser = result.map(movie => {
-      const user = users.find(user => user.id === movie.userId);
-      return {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        fullAddress: `${user.address.street} - ${user.address.city}`,
-        company: user.company.name,
-        movie: movie.title,
-        rate: movie.rate
-      };
+        const user = users.find(user => user.id === movie.userId);
+        return {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            fullAddress: `${user.address.street} - ${user.address.city}`,
+            company: user.company.name,
+            movie: movie.title,
+            rate: movie.rate
+        };
     });
-  
+
     return moviesWithUser;
-  }
-  
-  // Obtener una referencia al formulario y al botón
-  const filterForm = document.getElementById('filterForm');
-  const filterButton = document.getElementById('filterButton');
-  
-  // Agregar un controlador de eventos al botón
-  filterButton.addEventListener('click', function(event) {
+}
+
+// Obtener una referencia al formulario y al botón
+const filterForm = document.getElementById('filterForm');
+const filterButton = document.getElementById('filterButton');
+
+// Agregar un controlador de eventos al botón
+filterButton.addEventListener('click', function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe
-  
+
     // Obtener los valores del formulario
     const userId = document.getElementById('userId').value;
     const fromDate = document.getElementById('fromDate').value;
     const toDate = document.getElementById('toDate').value;
     const rate = document.getElementById('rate').value;
-  
-    // Realizar la filtración de películas con los valores del formulario
-    const films = filterMovies({ users, movies, userId, fromDate, toDate, rate });
-  
-    // Mostrar los resultados en el navegador o en la consola
-    console.log(films);
-    // Puedes llamar a la función para mostrar los resultados en el navegador si lo deseas
-    // mostrarResultadosFiltrados(movies);
-  });
-  
-  
+
+    // Validar que los parámetros obligatorios estén presentes
+    if (fromDate && toDate && rate) {
+        // Realizar la filtración de películas con los valores del formulario
+        const films = filterMovies({ users, movies, userId, fromDate, toDate, rate });
+
+        // Mostrar los resultados en el navegador
+        mostrarResultadosFiltrados(films);
+    } else {
+        // Mostrar un mensaje de error si faltan parámetros obligatorios
+        mostrarError('Debes completar todos los campos obligatorios.');
+    }
+});
+
+function mostrarResultadosFiltrados(movies) {
+    // Obtener una referencia al elemento HTML donde se mostrarán los resultados
+    const resultadosContainer = document.getElementById('resultadosContainer');
+
+    // Limpiar los resultados anteriores
+    resultadosContainer.innerHTML = '';
+
+    // Recorrer la lista de películas y crear elementos HTML para mostrar la información
+    movies.forEach(movie => {
+        const movieElement = document.createElement('div');
+        movieElement.innerHTML = `
+        <h3>${movie.movie}</h3>
+        <p>User ID: ${movie.id}</p>
+        <p>Username: ${movie.username}</p>
+        <p>Email: ${movie.email}</p>
+        <p>Address: ${movie.fullAddress}</p>
+        <p>Company: ${movie.company}</p>
+        <p>Rate: ${movie.rate}</p>
+        <p>Fecha: ${movie.watched}</p>
+      `;
+        resultadosContainer.appendChild(movieElement);
+    });
+}
+
+function mostrarError(message) {
+    // Obtener una referencia al elemento HTML donde se mostrará el mensaje de error
+    const errorContainer = document.getElementById('errorContainer');
+
+    // Mostrar el mensaje de error
+    errorContainer.textContent = message;
+}
