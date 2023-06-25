@@ -1,45 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+            rel="stylesheet">
 
-<head>
-    <title>Landing Page</title>
-</head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/png" href="/assets/icono pestaña.png">
+        <title>Kibi pelis</title>
+    </head>
 
-<body>
-    <h1></h1>
-
-    <form id="filterForm">
-        <div class="card">
-            <h1>Formulario de Filtrado</h1>
-            <div class="form-group">
-                <label for="userId">Usuario:</label>
-                <input type="text" id="userId" name="userId">
+    <body>
+        <header id="navbar">
+            <div class="logo">
+                <img src="/assets/Kibi silver BG.png" alt="Logo"
+                    style="width: 100px; height: auto;">
             </div>
-            <div class="form-group">
-                <label>Fecha</label>
-                <div class="date-range">
-                    <label for="fromDate">Desde:</label>
-                    <input type="text" id="fromDate" name="fromDate" pattern="\d{4}/\d{2}/\d{2}">
-                    <label for="toDate">Hasta:</label>
-                    <input type="text" id="toDate" name="toDate" pattern="\d{4}/\d{2}/\d{2}">
+            <div class="title">
+                <img src="/assets/Titulo Kibbi Pelis.png" alt="Logo">
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="sidebar">
+                <form id="filterForm">
+                    <div class="card">
+                        <h2>Formulario de Filtrado</h2>
+                        <div class="form-group">
+                            <label for="userId">Usuario:</label>
+                            <input type="text" id="userId" name="userId"
+                                class="short-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <div class="date-range">
+                                <label for="fromDate">Desde:</label>
+                                <input type="text" id="fromDate" name="fromDate"
+                                    pattern="\d{4}/\d{2}/\d{2}"
+                                    class="short-input">
+                                <label for="toDate">Hasta:</label>
+                                <input type="text" id="toDate" name="toDate"
+                                    pattern="\d{4}/\d{2}/\d{2}"
+                                    class="short-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rate">Calificación:</label>
+                            <input type="text" id="rate" name="rate"
+                                class="short-input">
+                        </div>
+                        <div class="filterButton">
+                            <button id="filterButton" class="purple-button">Filter
+                                Movies</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="content">
+                <div id="resultadosContainer">
+                    <!-- resultados -->
                 </div>
             </div>
-            <div class="form-group">
-                <label for="rate">Calificación:</label>
-                <input type="text" id="rate" name="rate">
-            </div>
-            <div class="filterButton">
-                <button id="filterButton">Filter Movies</button>
-            </div>
         </div>
-    </form>
-    
-    <div id="resultadosContainer">
-        <!-- resultados  -->
-    </div>
-    
-    <script src="/scripts/movies-filter.js"></script>
-    
-</body>
 
+        <script src="/scripts/movies-filter.js"></script>
+    </body>
 </html>

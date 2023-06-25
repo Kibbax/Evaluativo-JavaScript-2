@@ -434,18 +434,38 @@ function mostrarResultadosFiltrados(movies) {
 
     // Recorrer la lista de películas y crear elementos HTML para mostrar la información
     movies.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.innerHTML = `
-        <h3>${movie.movie}</h3>
-        <p>User ID: ${movie.id}</p>
-        <p>Username: ${movie.username}</p>
-        <p>Email: ${movie.email}</p>
-        <p>Address: ${movie.fullAddress}</p>
-        <p>Company: ${movie.company}</p>
-        <p>Rate: ${movie.rate}</p>
-        <p>Fecha: ${movie.watched}</p>
-      `;
-        resultadosContainer.appendChild(movieElement);
+        const movieCard = document.createElement('div');
+        movieCard.className = 'movie-card';
+    
+        const movieTitle = document.createElement('h3');
+        movieTitle.textContent = movie.movie;
+        movieCard.appendChild(movieTitle);
+    
+        const userId = document.createElement('p');
+        userId.textContent = `User ID: ${movie.id}`;
+        movieCard.appendChild(userId);
+    
+        const username = document.createElement('p');
+        username.textContent = `Username: ${movie.username}`;
+        movieCard.appendChild(username);
+    
+        const email = document.createElement('p');
+        email.textContent = `Email: ${movie.email}`;
+        movieCard.appendChild(email);
+    
+        const address = document.createElement('p');
+        address.textContent = `Address: ${movie.fullAddress}`;
+        movieCard.appendChild(address);
+    
+        const company = document.createElement('p');
+        company.textContent = `Company: ${movie.company}`;
+        movieCard.appendChild(company);
+    
+        const rate = document.createElement('p');
+        rate.textContent = `Rate: ${movie.rate}`;
+        movieCard.appendChild(rate);
+    
+        resultadosContainer.appendChild(movieCard);
     });
 }
 
