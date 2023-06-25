@@ -436,35 +436,35 @@ function mostrarResultadosFiltrados(movies) {
     movies.forEach(movie => {
         const movieCard = document.createElement('div');
         movieCard.className = 'movie-card';
-    
+
         const movieTitle = document.createElement('h3');
         movieTitle.textContent = movie.movie;
         movieCard.appendChild(movieTitle);
-    
+
         const userId = document.createElement('p');
         userId.textContent = `User ID: ${movie.id}`;
         movieCard.appendChild(userId);
-    
+
         const username = document.createElement('p');
         username.textContent = `Username: ${movie.username}`;
         movieCard.appendChild(username);
-    
+
         const email = document.createElement('p');
         email.textContent = `Email: ${movie.email}`;
         movieCard.appendChild(email);
-    
+
         const address = document.createElement('p');
         address.textContent = `Address: ${movie.fullAddress}`;
         movieCard.appendChild(address);
-    
+
         const company = document.createElement('p');
         company.textContent = `Company: ${movie.company}`;
         movieCard.appendChild(company);
-    
+
         const rate = document.createElement('p');
         rate.textContent = `Rate: ${movie.rate}`;
         movieCard.appendChild(rate);
-    
+
         resultadosContainer.appendChild(movieCard);
     });
 }

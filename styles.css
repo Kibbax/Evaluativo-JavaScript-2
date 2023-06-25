@@ -11,7 +11,7 @@ body {
 }
 
 .my-element {
-  border: 1px solid #ccc; /* Cambia el color según tus preferencias */
+  border: 1px solid #ccc;
 }
 
 .container {
@@ -32,7 +32,7 @@ body {
 }
 
 .card {
-  background-color:  #6E3667;
+  background-color: #6E3667;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -91,7 +91,7 @@ label {
 
 #navbar {
   background-color: #1A0315;
-  padding: 4px; 
+  padding: 4px;
   display: flex;
   align-items: center;
 }
@@ -133,7 +133,7 @@ label {
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s, transform 0.3s;
 }
 
